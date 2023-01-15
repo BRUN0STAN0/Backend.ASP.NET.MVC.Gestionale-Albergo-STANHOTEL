@@ -1,0 +1,77 @@
+﻿@model IEnumerable<STANHOTEL.Models.Cliente>
+
+@{
+    ViewBag.Title = "Lista";
+}
+
+@ViewBag.Success
+@ViewBag.Error
+<h2>Lista clienti</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodFiscale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Citta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Provincia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cellulare)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cognome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodFiscale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Citta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Provincia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cellulare)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

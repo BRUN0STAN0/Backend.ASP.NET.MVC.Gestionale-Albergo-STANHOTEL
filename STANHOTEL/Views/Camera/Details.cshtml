@@ -1,0 +1,54 @@
+﻿@model STANHOTEL.Models.Camera
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Camera</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Occupata)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Occupata)
+        </dd>
+
+
+            @Html.HiddenFor(model => model.ID_TipologiaCamera)
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Costo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Costo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
