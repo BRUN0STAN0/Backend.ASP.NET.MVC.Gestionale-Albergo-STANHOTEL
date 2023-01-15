@@ -35,7 +35,10 @@
         <th>
             @Html.DisplayNameFor(model => model.CostoTotaleEsclusiServizi)
         </th>
-        <th></th>
+        <th>
+            Servizi Aggiuntivi
+        </th>
+        <th>Edit</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -52,15 +55,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.Acconto)
         </td>
-            @Html.HiddenFor(modelItem => item.ID_Cliente)
+        @Html.HiddenFor(modelItem => item.ID_Cliente)
         <td>
             @Html.DisplayFor(modelItem => item.Cliente)
         </td>
-            @Html.HiddenFor(modelItem => item.ID_Camera)
+        @Html.HiddenFor(modelItem => item.ID_Camera)
         <td>
             @Html.DisplayFor(modelItem => item.Camera)
         </td>
-            @Html.HiddenFor(modelItem => item.ID_Pensione)
+        @Html.HiddenFor(modelItem => item.ID_Pensione)
         <td>
             @Html.DisplayFor(modelItem => item.Pensione)
         </td>
@@ -68,9 +71,17 @@
             @Html.DisplayFor(modelItem => item.CostoTotaleEsclusiServizi)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @foreach (var servizio in item.Servizi)
+            {
+                <span class="badge">@Html.DisplayFor(modelItem => servizio.Descrizione)</span>
+            }
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+
+            @Html.ActionLink("+Servizio (coming soon)", "Servizio", new { id = item.Id }, new {@class = "btn btn-primary" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

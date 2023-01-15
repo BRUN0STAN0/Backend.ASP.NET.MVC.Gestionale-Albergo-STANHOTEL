@@ -32,8 +32,9 @@ namespace STANHOTEL.Controllers
                         c.ID = Convert.ToInt32(reader["ID_Camera"]);
                         c.Numero = Convert.ToInt32(reader["Numero"]);
                         c.ID_TipologiaCamera = Convert.ToInt32(reader["ID_TipologiaCamera"]);
-                        c.Tipo = reader["Tipo"].ToString();
-                        c.Costo = Convert.ToDouble(reader["Costo"]);
+                        c.Tipo = reader["TipoCamera"].ToString();
+                        c.Costo = Convert.ToDouble(reader["CostoCamera"]);
+                        c.Occupata = Convert.ToBoolean(reader["Occupata"]);
                         Camera.Camere.Add(c);
                     }
                 }
@@ -64,7 +65,7 @@ namespace STANHOTEL.Controllers
 
                         SelectListItem tipologiaCamera = new SelectListItem();
                         tipologiaCamera.Value = reader["ID_TipologiaCamera"].ToString();
-                        tipologiaCamera.Text = reader["Tipo"] + " [Costo:" + reader["Costo"]+"]";
+                        tipologiaCamera.Text = reader["TipoCamera"] + " [Costo:" + reader["CostoCamera"]+"]";
                         ListaTipologieCamere.Add(tipologiaCamera);
                     }
                 }
@@ -88,7 +89,8 @@ namespace STANHOTEL.Controllers
                 cmd.Connection = con;
                 cmd.Parameters.AddWithValue("Numero", c.Numero);
                 cmd.Parameters.AddWithValue("ID_TipologiaCamera", c.ID_TipologiaCamera);
-                cmd.CommandText = "INSERT INTO Camera VALUES (@Numero, @ID_TipologiaCamera)";
+                cmd.Parameters.AddWithValue("Occupata", c.Occupata);
+                cmd.CommandText = "INSERT INTO Camera VALUES (@Numero, @ID_TipologiaCamera, @Occupata)";
                 int row = cmd.ExecuteNonQuery();
 
                 if (row > 0)
@@ -132,7 +134,7 @@ namespace STANHOTEL.Controllers
             {
                 ViewBag.Error = ex.Message;
             }
-            return RedirectToAction("Lista");
+            return View();
         }
 
         public ActionResult Details(int id)
@@ -155,8 +157,8 @@ namespace STANHOTEL.Controllers
                         c.Occupata = Convert.ToBoolean(reader["Occupata"]);
                         c.Numero = Convert.ToInt32(reader["Numero"]);
                         c.ID_TipologiaCamera = Convert.ToInt32(reader["ID_TipologiaCamera"]);
-                        c.Tipo = reader["Tipo"].ToString();
-                        c.Costo = Convert.ToDouble(reader["Costo"]);
+                        c.Tipo = reader["TipoCamera"].ToString();
+                        c.Costo = Convert.ToDouble(reader["CostoCamera"]);
 
                     }
                 }
@@ -211,7 +213,7 @@ namespace STANHOTEL.Controllers
 
                         SelectListItem tipologiaCamera = new SelectListItem();
                         tipologiaCamera.Value = reader2["ID_TipologiaCamera"].ToString();
-                        tipologiaCamera.Text = reader2["Tipo"] + " [Costo:" + reader2["Costo"] + "]";
+                        tipologiaCamera.Text = reader2["TipoCamera"] + " [Costo:" + reader2["CostoCamera"] + "]";
                         ListaTipologieCamere.Add(tipologiaCamera);
                     }
                 }
@@ -252,7 +254,7 @@ namespace STANHOTEL.Controllers
             {
                 ViewBag.Error = ex.Message;
             }
-            return RedirectToAction("Index");
+            return View();
         }
 
     }

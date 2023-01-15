@@ -131,6 +131,7 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Dipendente.cs" />
     <Compile Include="Models\Prenotazione.cs" />
+    <Compile Include="Models\Servizio.cs" />
     <Compile Include="Models\Shared.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -181,6 +182,7 @@
     <Content Include="Views\Camera\Edit.cshtml" />
     <Content Include="Views\Camera\Details.cshtml" />
     <Content Include="Views\Prenotazione\Index.cshtml" />
+    <Content Include="Views\Prenotazione\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,8 +24,11 @@ namespace STANHOTEL.Models
         public int ID_Pensione { get; set; }
         public string Pensione { get; set; }
         [DataType(DataType.Currency)]
+
         public double CostoTotaleEsclusiServizi { get; set; }
 
         public static List<Prenotazione> Prenotazioni = new List<Prenotazione>();
+
+        public List<Servizio> Servizi { get; set; } = new List<Servizio>();
     }
 }
